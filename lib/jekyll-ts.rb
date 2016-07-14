@@ -1,1 +1,1 @@
-require 'jekyll/ts'
+require 'jekyll/tsc'

@@ -1,7 +1,8 @@
 
+require 'jekyll'
 require 'open3'
 
-require_relative 'ts_env.rb'
+require_relative 'tsc_env.rb'
 
 module Jekyll
     module TSC
@@ -12,14 +13,14 @@ module Jekyll
                 @tspath = File.join(base, dir, name)
                 @jsdir = jsroot
                 @tsc = tsc
-                @opts = opts;
-                @env = env;
+                @opts = opts
+                @env = env
             end
 
             def write(dest)
                 # js name
                 ts_ext = /\.ts$/i
-                js_name = @name.gsub(ts_ext, ".js")
+                js_name = @name.gsub(ts_ext, '.js')
 
                 # js full path
                 js_path = File.join(dest, @jsdir)
@@ -42,9 +43,9 @@ module Jekyll
                                 first = false
                                 next
                             end
-                            Jekyll.logger.error(PLUGIN_NAME, "  #{v}");
+                            Jekyll.logger.error(PLUGIN_NAME, "  #{v}")
                         end
-                        Jekyll.logger.abort_with(PLUGIN_NAME, "Compilation failed.")
+                        Jekyll.logger.abort_with(PLUGIN_NAME, 'Compilation failed.')
                     end
 
                     Jekyll.logger.debug(PLUGIN_NAME, "Compiled #{@tspath} to #{js}")
